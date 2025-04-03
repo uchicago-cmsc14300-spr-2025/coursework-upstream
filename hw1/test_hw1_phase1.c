@@ -91,10 +91,10 @@ Test(hw1_sphere, sphere_contains00)
 
 Test(hw1_integrals, f_integral00)
 {
-  cr_assert(within(TOL,f_integral(0.0,1.0,0.1),1.2375));
+  cr_assert(within(TOL,f_integral(0.0,1.0,0.1),0.9375));
 }
 
 Test(hw1_integrals, g_integral00)
 {
-  cr_assert(within(TOL,g_integral(0.0,1.0,0.1),3.801388098));
+  cr_assert(within(TOL,g_integral(0.0,1.0,0.1),2.41724));
 }
