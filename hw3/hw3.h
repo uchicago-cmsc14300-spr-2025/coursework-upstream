@@ -48,16 +48,16 @@ static const int ERR_BAD_LOCATION = 68;
 // return a string corresponding to the piece
 // return the string "no piece" for p==0
 // GIGO for non-piece arguments (except 0)
-// this function is for *you* and will not be scored by us
+// this function is *for you* and will not be scored by us
 char *piece_str(piece p);
 
 // return a pointer to a new piece array of length 64
-// it must be located on the heap
+// array must be located on the heap
 // all squares empty
 piece *board_empty();
 
 // return a pointer to a new piece array of length 64
-// it must be located on the heap
+// array must be located on the heap
 // it should be the initial setup for a game of chess
 piece *board_setup();
 
@@ -66,14 +66,14 @@ piece *board_setup();
 piece board_get(piece *board, char rank, char file);
 
 // put the piece at the given position
-// NOTE: if the last argument is 0, clear the square
+// NOTE: if the last argument (p) is 0, clear the square
 // raise error if rank, file is not on the board
 // GIGO if the piece p is not a piece const or 0
 void board_set(piece *board, char rank, char file, piece p);
 	     
 // take the piece at src and put it at dst
-// if there is no piece at src, do nothing (but no error)
-// raise error if any rank or file is not on the board
+// if there is no piece at src, do nothing (and no error)
+// raise error if either rank or file is not on the board
 void board_do(piece *board,
 	      char src_rank, char src_file,
 	      char dst_rank, char dst_file);
@@ -83,11 +83,11 @@ void board_do(piece *board,
 // if there is no piece at dst, move knight and set outcome to 0
 // if there is an opponent's piece at dst, move knight and set outcome to captured piece
 // there are various things that can go wrong:
-// if src and/or dst is off the board, set outcome to ERR_BAD_LOCATION
-// if there is no piece at src, set outcome to ERR_NO_PIECE
-// if there is a non-knight at src, set outcome to ERR_PIECE_TYPE
-// if the move is not a knight's move, geometrically, set outcome to ERR_BAD_MOVE
-// if dst is occupied by a friendly piece, set outcome to ERR_FRIENDLY
+// - if src and/or dst is off the board, set outcome to ERR_BAD_LOCATION
+// - if there is no piece at src, set outcome to ERR_NO_PIECE
+// - if there is a non-knight at src, set outcome to ERR_PIECE_TYPE
+// - if the move is not a knight's move, geometrically, set outcome to ERR_BAD_MOVE
+// - if dst is occupied by a friendly piece, set outcome to ERR_FRIENDLY
 void move_knight(piece *board,
 		 char src_rank, char src_file,
 		 char dst_rank, char dst_file,
