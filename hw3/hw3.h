@@ -39,8 +39,8 @@ static const int ERR_BAD_LOCATION = 68;
 // -------------------------------------------------
 
 // a chess board location is specified by
-// a rank, a character from 'A' through 'H' inclusive, and
-// a file, a number from 1 to 8 inclusive
+// a file, a character from 'A' through 'H' inclusive, and
+// a rank, a number from 1 to 8 inclusive
 
 // in the comments below, "raise error" means
 // print a message to stderr and exit(1)
@@ -62,23 +62,23 @@ piece *board_empty();
 piece *board_setup();
 
 // get the piece at the given position
-// raise error if rank, file is not on the board
-piece board_get(piece *board, char rank, char file);
+// raise error if file, rank is not on the board
+piece board_get(piece *board, char file, char rank);
 
 // put the piece at the given position
 // NOTE: if the last argument (p) is 0, clear the square
-// raise error if rank, file is not on the board
+// raise error if file, rank is not on the board
 // GIGO if the piece p is not a piece const or 0
-void board_set(piece *board, char rank, char file, piece p);
+void board_set(piece *board, char file, char rank, piece p);
 	     
 // take the piece at src and put it at dst
 // if there is no piece at src, do nothing (and no error)
-// raise error if either rank or file is not on the board
+// raise error if either file or rank is not on the board
 void board_do(piece *board,
-	      char src_rank, char src_file,
-	      char dst_rank, char dst_file);
+	      char src_file, char src_rank,
+	      char dst_file, char dst_rank);
 
-// move the knight at src_rank, src_file to dst_rank, dst_file
+// move the knight at src_file, src_rank to dst_file, dst_rank
 // the code should not crash or exit, even when something is wrong
 // if there is no piece at dst, move knight and set outcome to 0
 // if there is an opponent's piece at dst, move knight and set outcome to captured piece
@@ -89,8 +89,8 @@ void board_do(piece *board,
 // - if the move is not a knight's move, geometrically, set outcome to ERR_BAD_MOVE
 // - if dst is occupied by a friendly piece, set outcome to ERR_FRIENDLY
 void move_knight(piece *board,
-		 char src_rank, char src_file,
-		 char dst_rank, char dst_file,
+		 char src_file, char src_rank,
+		 char dst_file, char dst_rank,
 		 char *outcome);
 
 #endif
