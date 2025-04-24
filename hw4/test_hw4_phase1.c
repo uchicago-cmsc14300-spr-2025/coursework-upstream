@@ -19,7 +19,7 @@ Test(hw4_board_empty, board_empty00) {
 
 Test(hw4_board_setup, board_setup00) {
   chessboard *b = board_setup();
-  cr_assert(b->cells[0] = (WR<<4)|WN);
+  cr_assert(b->cells[0]==((WR<<4)|WN));
 }
 
 Test(hw4_board_get, board_get00) {
