@@ -1,0 +1,35 @@
+README
+
+Lab 6, CMSC 14300, Spring 2025
+
+This directory includes source code implementing a recursive tree sum
+and an iterative tree sum. The code works; it is logically
+correct. Nevertheless, it contains bugs that can be discovered by very
+close reading and/or the assistance of a diagnostic tool like
+valgrind.
+
+The contents of this directory:
+
+Makefile     Instructions to compile targets tsr ("tree sum recursive")
+	     and tsi ("tree sum iterative"). Also, type "make clean"
+	     to remove derived files (executables, etc.).
+
+tree.h	     Int tree data structure and specs for basic operations.
+
+tree.c	     Implementations of the operations from tree.h.
+
+tree_list.h  Linked list of trees data structure, operation specs.
+
+tree_list.c  Implementations of tree list and ops.
+
+tree_stack.h Stack of tree as a container struct pointing to a list.
+
+tree_stack.c Implementation of stack operations.
+
+tree_sum_recursive.c
+	     Recursive tree sum and a few tests in main.
+
+tree_sum_iterative.c
+	     Iterative tree sum and a few tests in main.
+
+README	     This file.
