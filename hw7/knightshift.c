@@ -319,6 +319,14 @@ move_list *available_moves(board *b, color curr)
   return moves;
 }
 
+void lfree(loc_list *locs)
+{
+  if (locs) {
+    lfree(locs->next);
+    free(locs);
+  }
+}
+
 void mfree(move_list *ms)
 {
   if (ms) {
