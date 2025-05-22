@@ -94,13 +94,11 @@ int isrank(char c)
 
 int is_fortify_cmd(char *canon)
 {
-  if (strlen(canon)!=5)
+  if (strlen(canon)!=3)
       return 0;
   return canon[0]=='F' &&
     isfile(canon[1]) &&
-    isrank(canon[2]) &&
-    isfile(canon[3]) &&
-    isrank(canon[4]);
+    isrank(canon[2]);
 }
 
 int is_move_cmd(char *canon)
