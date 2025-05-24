@@ -459,6 +459,7 @@ void fortify(board *b, loc k, color curr, int *outcome)
     return;
   }
   p->type = FORTRESS;
+  *outcome = 0;
 }
 
 int game_over(board *b)
