@@ -306,6 +306,7 @@ move_list *available_moves(board *b, color curr)
 	  if (legal_knight(b,m,curr))
 	    moves = mcons(m,moves);
 	}
+	lfree(ks);
       } else if (p->type==ROYAL_GUARD) {
 	loc_list *ks = adjacent_guard(locs->k);
 	for (;ks;ks=ks->next) {
@@ -313,9 +314,11 @@ move_list *available_moves(board *b, color curr)
 	  if (legal_guard(b,m,curr))
 	    moves = mcons(m,moves);
 	}
+	lfree(ks);
       }
     }
   }
+  lfree(locs);
   return moves;
 }
 
