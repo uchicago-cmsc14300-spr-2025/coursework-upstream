@@ -124,7 +124,7 @@ char *canonicalize(char *line)
   char *canon = malloc(n+1);
   int j=0;
   for (int i=0; i<n; ++i) {
-    if (isnumber(line[i]))
+    if (isdigit(line[i]))
       canon[j++]=line[i];
     else if (isalpha(line[i]))
       canon[j++]=toupper(line[i]);

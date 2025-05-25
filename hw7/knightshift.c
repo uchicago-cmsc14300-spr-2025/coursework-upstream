@@ -212,11 +212,15 @@ int opp_protected(board *b, loc k, color curr)
 {
   color opp = curr==WHITE?BLACK:WHITE;
   loc_list *orth = adjacent_ortho(k);
+  loc_list *freeme = orth;
   for (;orth;orth=orth->next) {
     piece *g = piece_at(b,orth->k);
-    if (g && g->type==ROYAL_GUARD && g->color==opp)
+    if (g && g->type==ROYAL_GUARD && g->color==opp) {
+      lfree(freeme);
       return 1;
+    }
   }
+  lfree(freeme);
   return 0;
 }
 
@@ -226,11 +230,15 @@ int protected_knight_at(board *b, loc k)
   if (!p || p->type!=KNIGHT)
     return 0;
   loc_list *orth = adjacent_ortho(k);
+  loc_list *freeme = orth;
   for (;orth;orth=orth->next) {
     piece *g = piece_at(b,orth->k);
-    if (g && g->type==ROYAL_GUARD && g->color==p->color)
+    if (g && g->type==ROYAL_GUARD && g->color==p->color) {
+      lfree(freeme);
       return 1;
+    }
   }
+  lfree(freeme);
   return 0;
 }
 
