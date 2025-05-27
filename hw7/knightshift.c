@@ -303,30 +303,33 @@ move_list *mcons(move m, move_list *moves)
 move_list *available_moves(board *b, color curr)
 {
   loc_list *locs = pieces_of(b,curr);
+  loc_list *freeme = locs;
   move_list *moves = NULL;
   for (;locs;locs=locs->next) {
     piece *p = piece_at(b,locs->k);
     if (p) {
       if (p->type==KNIGHT) {
 	loc_list *ks = adjacent_knight(locs->k);
+	loc_list *tmp = ks;
 	for (;ks;ks=ks->next) {
 	  move m = {locs->k,ks->k};
 	  if (legal_knight(b,m,curr))
 	    moves = mcons(m,moves);
 	}
-	lfree(ks);
+	lfree(tmp);
       } else if (p->type==ROYAL_GUARD) {
 	loc_list *ks = adjacent_guard(locs->k);
+	loc_list *tmp = ks;
 	for (;ks;ks=ks->next) {
 	  move m = {locs->k,ks->k};
 	  if (legal_guard(b,m,curr))
 	    moves = mcons(m,moves);
 	}
-	lfree(ks);
+	lfree(tmp);
       }
     }
   }
-  lfree(locs);
+  lfree(freeme);
   return moves;
 }
 
